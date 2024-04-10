@@ -36,7 +36,7 @@ generateAccessToken: (user)=>{
             admin: user.admin
         },
         process.env.JWT_ACCESS_SECRET,
-        {expiresIn: "30s"}
+        {expiresIn: "300s"}
     );
 },
 // GENERATE REFRESH TOKEN
@@ -47,7 +47,7 @@ generaterefreshToken: (user)=>{
             admin: user.admin
         },
         process.env.JWT_REFRESH_SECRET,
-        {expiresIn: "30s"}
+        {expiresIn: "300s"}
     );
 },
 

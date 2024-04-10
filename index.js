@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv")
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/auth");
 const useRoute = require("./routes/user");
 
-dotenv.config();
+
 const app = express();
+dotenv.config()
 
 mongoose.connect(process.env.MONGODB_URL,{
     dbName:"choc",
