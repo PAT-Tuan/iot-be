@@ -28,32 +28,32 @@ const authController = {
             res.status(500).json(error);
         }
     },
-// GENERATE ACCESS TOKEN
-generateAccessToken: (user)=>{
-    return jwt.sign(
-        {
-            id: user._id,
-            admin: user.admin
-        },
-        process.env.JWT_ACCESS_SECRET,
-        {expiresIn: "300s"}
-    );
-},
-// GENERATE REFRESH TOKEN
-generaterefreshToken: (user)=>{
-    return jwt.sign(
-        {
-            id: user._id,
-            admin: user.admin
-        },
-        process.env.JWT_REFRESH_SECRET,
-        {expiresIn: "300s"}
-    );
-},
+    // GENERATE ACCESS TOKEN
+    generateAccessToken: (user) => {
+        return jwt.sign(
+            {
+                id: user._id,
+                admin: user.admin
+            },
+            process.env.JWT_ACCESS_SECRET,
+            { expiresIn: "300s" }
+        );
+    },
+    // GENERATE REFRESH TOKEN
+    generaterefreshToken: (user) => {
+        return jwt.sign(
+            {
+                id: user._id,
+                admin: user.admin
+            },
+            process.env.JWT_REFRESH_SECRET,
+            { expiresIn: "300s" }
+        );
+    },
 
     loginUser: async (req, res) => {
         try {
-            const userRepo =  new User()
+            const userRepo = new User()
 
             const user = await userRepo.collection.findOne({
                 "email": req.body.email
@@ -67,7 +67,7 @@ generaterefreshToken: (user)=>{
                 })
             }
 
-            console.log( user)
+            console.log(user)
 
             var isMatch = await bcrypt.compare(req.body.password, user.password)
 
