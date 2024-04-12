@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/auth");
 const useRoute = require("./routes/user");
 
+const port = process.env.PORT || 4000;
+
 
 const app = express();
 dotenv.config()
@@ -28,7 +30,7 @@ app.use(express.json());
 app.use("/v1/auth", authRoute);
 app.use("/v1/user", useRoute);
 
-app.listen(8000, () => {
+app.listen(port, () => {
     console.log("Server is running");
 });
 
