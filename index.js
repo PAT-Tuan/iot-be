@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/auth");
 const useRoute = require("./routes/user");
+const orderRoute = require("./routes/order");
 
 const port = process.env.PORT || 4000;
 
@@ -29,9 +30,10 @@ app.use(express.json());
 //ROUTES
 app.use("/v1/auth", authRoute);
 app.use("/v1/user", useRoute);
+app.use("/v1/order", orderRoute);
 
 app.listen(port, () => {
-    console.log("Server is running");
+    console.log("Server is running on port: " + port);
 });
 
 // JSON WEB TOKEN
