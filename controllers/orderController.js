@@ -68,7 +68,25 @@ const orderController = {
             console.log("Error in Order:", error);
             res.status(500).json(error);
         }
+    }, 
+    removeOrderById: async function(req, res) {
+        const orderId = req.params.id; // Lấy id của đơn hàng cần xóa từ URL params
+        console.log(orderId);
+        try {
+            // Tìm và xóa đơn hàng từ cơ sở dữ liệu MongoDB
+            const deletedOrder = await Order.findByIdAndDelete(orderId);
+    
+            if (!deletedOrder) {
+                return res.status(404).json({ isSuccess: false, message: "Đơn hàng không tồn tại" });
+            }
+    
+            res.status(200).json({ isSuccess: true, message: "Đã xóa đơn hàng thành công", data: deletedOrder });
+        } catch (error) {
+            console.log("Lỗi khi xóa đơn hàng:", error);
+            res.status(500).json({ isSuccess: false, message: "Đã xảy ra lỗi khi xóa đơn hàng", error: error.message });
+        }
     }
+    
     
 }
 

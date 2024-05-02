@@ -19,5 +19,5 @@ router.post("/", orderController.listOrder);
 router.post("/get", orderController.getOrderById);
 
 router.post("/me", orderController.listOrderByUserId);
-
+router.delete("/me/:id", orderController.removeOrderById);
 module.exports = router;
